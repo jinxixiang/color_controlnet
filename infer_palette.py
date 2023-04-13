@@ -77,19 +77,14 @@ def show_anns(anns, cond_image):
     visited = np.zeros((h, w))
     for ann in sorted_anns:
         m = ann['segmentation']
-        # color_mask = np.random.random((1, 3)).tolist()[0]
         modify_m = (m * (1 - visited)) == 1
         if modify_m.sum() > 0:
             this_color = np.mean(cond_image[modify_m], 0)
             palette[modify_m] += this_color
-            # for i in range(3):
-            #     mask[modify_m, i] = color_mask[i]
-            # assert not (mask == 1).all(), "error"
             visited[modify_m] += 1
         ann.pop('segmentation')
 
     palette = Image.fromarray(palette.astype(np.uint8))
-    # mask = Image.fromarray((mask * 255).astype(np.uint8))
     return palette
 
 
@@ -118,7 +113,7 @@ def preprocess_sketch_and_palette(pil_image):
 
     # for intermediate saving
     detected_arr = sketch_cond.squeeze().permute((1, 2, 0)).cpu().numpy()
-    detected_img = Image.fromarray(np.uint8(detected_arr * 255))
+    detected_img = Image.fromarray(np.uint8((detected_arr + 1) / 2.0 * 255.0))
 
     if sketch_cond is None:
         sketch_cond = transform(detected_img).unsqueeze(0)
