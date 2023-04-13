@@ -1,0 +1,2 @@
+transfomers==4.27.1
+open_clip_torch
