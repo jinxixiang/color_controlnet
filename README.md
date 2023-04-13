@@ -14,6 +14,9 @@ Download the pretrained [weights]().
 
 Run __infer_palette.py__ to reproduce the results.
 
+
+The first cell is sketch condition. The second cell is a color condition (black means no condition). The last four cells are four pictures generated with different seeds.
+
 ![103459523_p0](./assets/103459523_p0.png)
 
 ![palette_103459523_p0](./assets/palette_103459523_p0.png)
