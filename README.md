@@ -10,7 +10,7 @@ We provide two color condition inputs:
 We generate sketch with [anime2sketch](https://github.com/Mukosame/Anime2Sketch)
 
 
-Download the pretrained [weights]().
+Download the pretrained [weights](https://drive.google.com/drive/folders/1HmOfefmXpYYOBBi9wuDoIGpiWxjFXMw7?usp=sharing).
 
 Run __infer_palette.py__ to reproduce the results.
 
