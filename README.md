@@ -41,6 +41,7 @@ The first cell is sketch condition. The second cell is a color condition (black 
 
 
 ## Demo
+The first screenshot is sketch condition. The second screenshot is a block-based palette condition. The third screenshot is a SAM-based palette condition. Diffrent choices for different paltte(Nothing, Block palette, SAM palette)
 
 ![line_demo](./assets/line_demo.png)
 
