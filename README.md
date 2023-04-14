@@ -1,6 +1,6 @@
 # A simple extension of Controlnet for color condition
 
-
+Sketch or line art colorization is a research field with significant market demand. 
 
 ## Features
 We provide two color condition inputs:
