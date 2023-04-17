@@ -18,6 +18,9 @@ Generate sketch with [anime2sketch](https://github.com/Mukosame/Anime2Sketch)
 
 Download the pretrained [weights](https://drive.google.com/drive/folders/1HmOfefmXpYYOBBi9wuDoIGpiWxjFXMw7?usp=sharing).
 
+
+**Training code**: our model is compatible with the training code of [diffusers controlnet](https://github.com/huggingface/diffusers/tree/main/examples/controlnet).
+
 Run __infer_palette.py__ to reproduce the results.
 
 
