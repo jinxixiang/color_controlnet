@@ -28,8 +28,8 @@ Version 2 (recommended):  Run __infer_palette_img2img.py__ to reproduce the resu
 
 ## Results 
 
+The first cell pertains to the sketch condition, while the subsequent cell represents the rectangular palette condition. The third cell corresponds to the SAM palette. The final four cells showcase four distinct images that were generated using varying seeds.
 
-The first cell is sketch condition. The second cell is a color condition (black means no condition). The last four cells are four pictures generated with different seeds.
 
 ![100226234_p0](./assets/100226234_p0.png)
 
@@ -44,7 +44,7 @@ The first cell is sketch condition. The second cell is a color condition (black 
 
 When utilizing the SAM palette in an image-to-image capacity, it is likely that the results obtained will be low-contrast, as the color of a mask is limited to a single value. However, the implementation of a rectangular palette can serve to address this limitation by introducing color variations into the denoising process. An ablation study example is presented below to further illustrate this concept.
 
-![ablation](./assets/ablation.png)
+![ablation](./assets/ablation.JPG)
 
 
 
