@@ -48,12 +48,3 @@ When utilizing the SAM palette in an image-to-image capacity, it is likely that 
 ![ablation](./assets/ablation.JPG)
 
 
-
-## Demo
-
-Use scribble to control color.
-
-
-<video width="320" height="240" controls>
-  <source src="./assets/demo.gif" type="video/mp4">
-</video>
