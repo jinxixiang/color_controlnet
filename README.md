@@ -48,3 +48,10 @@ When utilizing the SAM palette in an image-to-image capacity, it is likely that 
 ![ablation](./assets/ablation.JPG)
 
 
+## Edit Color
+
+
+With this model, we can easily edit the color of an image by simply scribbling.
+
+![color_edit](./assets/color_edit.png)
+
