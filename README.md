@@ -40,7 +40,8 @@ The first cell pertains to the sketch condition, while the subsequent cell repre
 ![23196413_p0](./assets/23196413_p0.png)
 
 
-## Why do we use extra rectangular palette?
+## What is the rationale behind utilizing an additional rectangular palette?
+
 
 When utilizing the SAM palette in an image-to-image capacity, it is likely that the results obtained will be low-contrast, as the color of a mask is limited to a single value. However, the implementation of a rectangular palette can serve to address this limitation by introducing color variations into the denoising process. An ablation study example is presented below to further illustrate this concept.
 
@@ -54,5 +55,5 @@ Use scribble to control color.
 
 
 <video width="320" height="240" controls>
-  <source src="./assets/demo.mov" type="video/mp4">
+  <source src="./assets/demo.gif" type="video/mp4">
 </video>
