@@ -29,6 +29,7 @@ if is_torch_available():
     # t2i adapter custom. Jinxi Xiang
     from .adapter import Adapter_light, Adapter, AdapterTime, AdapterTimePlus
     from .anime2sketch import UnetGenerator
+    from .SKmodel import LineartDetector
 
 if is_flax_available():
     from .unet_2d_condition_flax import FlaxUNet2DConditionModel

@@ -17,7 +17,6 @@ from .utils import (
     logging,
 )
 
-
 try:
     if not is_onnx_available():
         raise OptionalDependencyNotAvailable()
@@ -35,10 +34,11 @@ else:
     from .models import (
         AutoencoderKL,
         ControlNetModel,
-        Adapter,   # new
+        Adapter,  # new
         Adapter_light,  # new
-        AdapterTime, # new
-        AdapterTimePlus, # new
+        AdapterTime,  # new
+        AdapterTimePlus,  # new
+        LineartDetector,  # new
         UnetGenerator,
         ModelMixin,
         PriorTransformer,
@@ -104,7 +104,6 @@ except OptionalDependencyNotAvailable:
 else:
     from .schedulers import LMSDiscreteScheduler
 
-
 try:
     if not (is_torch_available() and is_transformers_available()):
         raise OptionalDependencyNotAvailable()
@@ -120,7 +119,8 @@ else:
         SemanticStableDiffusionPipeline,
         StableDiffusionAttendAndExcitePipeline,
         StableDiffusionControlNetPipeline,
-        StableDiffusionControlNetPalettePipeline, # new
+        StableDiffusionControlNetPalettePipeline,  # new
+        StableDiffusionImg2ImgControlNetPalettePipeline,  # new
         StableDiffusionDepth2ImgPipeline,
         StableDiffusionImageVariationPipeline,
         StableDiffusionImg2ImgPipeline,
@@ -196,7 +196,6 @@ else:
         FlaxSchedulerMixin,
         FlaxScoreSdeVeScheduler,
     )
-
 
 try:
     if not (is_flax_available() and is_transformers_available()):

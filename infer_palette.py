@@ -7,6 +7,7 @@ from diffusers import UniPCMultistepScheduler
 from torchvision import transforms
 import glob
 from tqdm import tqdm
+from segment_anything import sam_model_registry, SamAutomaticMaskGenerator
 
 
 def get_cond_color(cond_image, mask_size=64):
@@ -88,6 +89,28 @@ def show_anns(anns, cond_image):
     return palette
 
 
+class SAMImageAnnotator:
+    def __init__(self):
+        sam_checkpoint = "/your/dir/to/sam_vit_h_4b8939.pth"
+        model_type = "default"  # "vit_l"
+
+        sam = sam_model_registry[model_type](checkpoint=sam_checkpoint)
+        sam.to(device=device)
+        self.mask_generator = SamAutomaticMaskGenerator(
+            model=sam, points_per_side=32,
+            pred_iou_thresh=0.1,
+            stability_score_thresh=0.1,
+            crop_n_layers=1,
+            crop_n_points_downscale_factor=2,
+            points_per_batch=64)
+
+    def __call__(self, pil_image):
+        cond_image = np.asarray(pil_image.convert("RGB"))
+        masks = self.mask_generator.generate(cond_image)
+        palette = show_anns(masks, cond_image)
+        return palette
+
+
 def preprocess_sketch_and_palette(pil_image):
     transform = transforms.Compose([
         transforms.ToTensor(),
@@ -120,24 +143,7 @@ def preprocess_sketch_and_palette(pil_image):
 
     # prepare color palette
     if mask_or_downsample == "meta_sam":
-        sam_checkpoint = "/your/dir/to/sam_vit_h_4b8939.pth"
-        model_type = "default"  # "vit_l"
-        from segment_anything import sam_model_registry, SamAutomaticMaskGenerator
-
-        sam = sam_model_registry[model_type](checkpoint=sam_checkpoint)
-        sam.to(device=device)
-        mask_generator = SamAutomaticMaskGenerator(
-            model=sam, points_per_side=32,
-            pred_iou_thresh=0.8,
-            stability_score_thresh=0.8,
-            crop_n_layers=1,
-            crop_n_points_downscale_factor=2,
-            points_per_batch=64)
-
-        cond_image = np.asarray(pil_image.convert("RGB"))
-        masks = mask_generator.generate(cond_image)
-        palette = show_anns(masks, cond_image)
-
+        palette = sam_annotator(pil_image)
     else:
         palette = get_cond_color(pil_image, mask_size=32)
 
@@ -152,7 +158,8 @@ if __name__ == "__main__":
     controlnet = ControlNetModel.from_config("./model_configs/controlnet_config.json").half()
     adapter = AdapterTimePlus(cin=3 * 64, channels=[320, 640, 1280, 1280],
                               nums_rb=2, ksize=1, sk=True, use_conv=False).half()
-    # adapter = None
+
+    sam_annotator = SAMImageAnnotator()
 
     # choose one of them
     mask_or_downsample = "meta_sam"

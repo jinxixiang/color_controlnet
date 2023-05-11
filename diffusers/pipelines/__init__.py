@@ -50,6 +50,7 @@ else:
         StableDiffusionAttendAndExcitePipeline,
         StableDiffusionControlNetPipeline,
         StableDiffusionControlNetPalettePipeline,  # new
+        StableDiffusionImg2ImgControlNetPalettePipeline, # new
         StableDiffusionDepth2ImgPipeline,
         StableDiffusionImageVariationPipeline,
         StableDiffusionImg2ImgPipeline,
