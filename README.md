@@ -52,5 +52,7 @@ When utilizing the SAM palette in an image-to-image capacity, it is likely that 
 
 Use scribble to control color.
 
-<video src="./assets/demo.mov" controls="controls" style="max-width: 730px;">
+
+<video width="320" height="240" controls>
+  <source src="./assets/demo.mov" type="video/mp4">
 </video>
