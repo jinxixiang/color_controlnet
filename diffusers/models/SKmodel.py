@@ -95,8 +95,7 @@ class LineartDetector(nn.Module):
     def load_model(self, name):
         # remote_model_path = "https://huggingface.co/lllyasviel/Annotators/resolve/main/" + name
 
-        modelpath = os.path.join("/mnt/group-ai-medical-cq/private/jinxixiang/code/diffusion/"
-                                 "ControlNet-v1-1-nightly/annotator/ckpts", name)
+        modelpath = ""  # your dir to the SAM weight
 
         if not os.path.exists(modelpath):
             print(modelpath)
@@ -111,23 +110,3 @@ class LineartDetector(nn.Module):
 
     def forward(self, input_image, coarse=False):
         pass
-
-        # model = self.model_coarse if coarse else self.model
-        # image = (input_image + 1) * 0.5
-        # image = input_image
-        # line = model(image)
-        # return line
-
-        # assert input_image.ndim == 3
-
-        # image = input_image
-
-        # with torch.no_grad():
-            # image = torch.from_numpy(image).float().cuda()
-            # image = image / 255.0
-            # image = rearrange(image, 'h w c -> 1 c h w')
-            # line = model(image)[0][0]
-            # line = line.cpu().numpy()
-            # line = (line * 255.0).clip(0, 255).astype(np.uint8)
-            #
-            # return line
